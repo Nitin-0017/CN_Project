@@ -1,78 +1,156 @@
-# Phase 1 Historical Updates
+# Phase 1 Project History
 
-Earlier statuses below are historical snapshots and superseded by Progress.md.
+This document records the main setup, testing and recovery milestones.
 
-# Phase 1 Progress
+For the current project status, see [Progress](Progress.md). Historical IP addresses and process IDs must not be reused as current configuration values.
 
-## Confirmed information
+## 1. Initial Network Checks
 
-- Team members: Nitin Kumar, Kartik Yadav, Piyush Yadav.
-- All laptops run macOS, as confirmed by the user.
-- Scope is Phase 1 only.
+The team first collected network information and ping results on the college network.
 
-## Task tracker
+These outputs are retained as historical evidence. The final Phase 1 demonstration used Kartik's phone hotspot.
 
-| Task | Owner | Status | Evidence |
-|---|---|---|---|
-| A LAN and topology | All; Nitin documents | Complete: Kartik hotspot inventory, topology and six peer pings | evidence/01_network_inventory_initial.md, evidence/02_ipv4_inventory.md, evidence/03_peer_ping_results.md |
-| B Private DNS | Nitin; Kartik and Piyush clients | Complete: both clients configured, app/api dig and system resolution verified | evidence/09_dns_prerequisites.md, evidence/10_dns_startup.md and evidence/11_explicit_dns_queries.md |
-| C Two backends | Nitin and Piyush | Complete: A/B startup, both endpoints and headers verified from Kartik | evidence/07_backend_startup.md and evidence/08_backend_http_tests.md |
-| D nginx load balancing | Kartik | Complete: repeat HTTP domain test 6/6 passed A/B/A/B/A/B; initial timeout cause unknown | evidence/14_nginx_install_original.txt and evidence/15_nginx_validation_launch.md |
-| E HTTPS and trust | Kartik; all clients | Trust and HTTPS complete on all three; TLS packet evidence pending Task G | evidence/19_tls_certificate_metadata.md |
-| F HTTP caching | Piyush | Complete: HTTPS 200 from B, matching ETag conditional 304 from A | evidence/24_https_cache_304_verified.md |
-| G Protocol capture | Piyush captures; Nitin documents; all explain | Complete: original pcapng verified DNS, TCP, TLS1.2 and encrypted application data | evidence/26_packet_overview.md and Piyush_DNS_TCP_TLS_overview.jpg |
-| Five failure demonstrations | All | 4/5 complete: wrong DNS, wrong port, one/both backend failures and recovery; wrong-record pending | evidence/28_wrong_client_dns_failure.md |
-| Configuration bundle and source | All | Pending | None yet |
-| Phase 1 live checkpoint and viva | All | Pending | None yet |
+## 2. Final Hotspot Network
 
-## Update log
+On 3 October 2026, all three Macs connected to the same hotspot LAN.
 
-2026-10-03: Created Phase 1 role assignment, architecture draft and tracker. No LAN configuration or live test performed by the assistant.
+| Machine | Recorded IP |
+|---|---|
+| Nitin | 10.63.169.3 |
+| Kartik | 10.63.169.72 |
+| Piyush | 10.63.169.63 |
 
-2026-10-03: Recorded user-supplied hardware-port and default-route outputs for all three members. All report en0 and gateway 10.7.0.1. Hardware Wi-Fi MACs saved; active MAC confirmation pending. No peer connectivity inferred from shared gateway alone.
+All machines used interface `en0`, subnet mask `255.255.255.0` and gateway `10.63.169.210`.
 
-2026-10-03: Recorded all three IPv4 addresses, active MAC addresses and /19 subnet masks from user outputs. All interfaces report active. Computed common subnet 10.7.0.0/19. Peer connectivity is pending.
+Six directional ping tests succeeded with four replies and zero packet loss each.
 
-2026-10-03: All six user-supplied ping tests passed with 4 transmitted, 4 received and 0.0% loss. Task A LAN inventory/topology and reachability marked complete. DNS, HTTP and TLS remain untested.
+## 3. Backend Services
 
-2026-10-03: Recorded Homebrew and Python versions from all three members in evidence/04_tool_versions.md. User clarified private Wi-Fi has not been established; existing reachability remains verified but network ownership/control is unknown. Task A final acceptance awaits suitable project LAN confirmation. Screenshot guidance added.
+Nitin started Backend A on port `3001`. Piyush started Backend B on port `3002`.
 
-## Next input
+Kartik tested `/` and `/api/status` on both backends. All four direct requests returned HTTP 200 and the correct backend identifiers.
 
-Piyush: check whether /Applications/Wireshark.app exists using ls -d /Applications/Wireshark.app. If absent, install Wireshark via Homebrew cask in next step. Capture client en0 DNS and HTTPS traffic from Piyush, whose default resolver is Nitin; save .pcapng and selected packet screenshots. All servers remain running.
+## 4. Private DNS
 
-2026-10-03 20:17 IST: HTTPS cache test passed with 200 B and conditional 304 A using identical ETag. Task F complete; cache-hit explanation and conditional behavior documented. Task G packet evidence and five failure demonstrations remain pending.
+Nitin installed and configured dnsmasq.
 
-2026-10-03: Received and saved readable original caching screenshot as evidence/Piyush_HTTPS_cache_304.jpg; shows first 200 B, ETag/Cache-Control and conditional 304 A.
+Both project domains were mapped to Kartik's edge IP:
 
-2026-10-03: Piyush Wireshark app installed and en0 capture screenshot received; displayed traffic is background and not sufficient project evidence. Fresh scoped capture instructions prepared in docs/06_Packet_Capture.md. Task G pending actual .pcapng and packet inspection.
+```text
+app.teamcn.test → 10.63.169.72
+api.teamcn.test → 10.63.169.72
+```
 
-2026-10-03 20:25 IST: DNS and TLS1.2 terminal test passed. Wireshark screenshot does not confirm fresh scoped capture. Task G remains pending actual project packets and .pcapng file. Capture UI troubleshooting next.
+Kartik and Piyush verified direct DNS queries, configured their default Wi-Fi DNS to `10.63.169.3`, and confirmed successful resolution.
 
-2026-10-03: Fresh stopped capture screenshot shows 41 packets, 0 dropped and project protocol flow. Saved screenshot and visible frame references 15-35. Await actual .pcapng and expanded DNS/TLS details; Task G partial.
+External forwarding was verified using example.com.
 
-2026-10-03: Original pcapng received, saved and analysed using tshark. Verified DNS ports, TCP handshake, TLS1.2/certificate and encrypted data. Public certificate extracted from frame27 and SHA256 matched. Task G complete; focused screenshots and five mandatory failure demonstrations next.
+## 5. nginx HTTP Routing
 
-2026-10-03: Received original focused DNS/TCP/TLS screenshots and saved unchanged as JPEGs in evidence/. Packet evidence ready. Five failure demonstrations remain pending; first wrong-client-DNS test instructions added in docs/07_Failure_Demonstrations.md.
+Kartik configured nginx with Backend A and Backend B as upstream servers.
 
-2026-10-03 20:47:10 IST: Piyush wrong-DNS test produced NXDOMAIN via 8.8.8.8 with successful 4/4 direct-IP ping. Saved original screenshot. Project DNS restore is next and remains unverified.
+The initial HTTP test had four timeouts followed by successful responses. A later six-request test returned HTTP 200 for every request with alternating A/B responses.
 
-2026-10-03 20:48:14 IST: Wrong-client-DNS restoration verified and original screenshot saved. First failure demo complete. Next Piyush wrong destination port test on 8444, followed by correct8443 validation; all services remain running.
+The cause of the initial delay was not conclusively established.
 
-2026-10-03 20:51 IST: Wrong-port test complete: valid DNS, TCP8444 connection refused, correct8443 HTTP200 B. Saved original screenshot. One-backend-stop demonstration next, then restore A.
+## 6. TLS Certificate and HTTPS
 
-2026-10-03 20:54 IST: A stop screenshot and six B-only HTTPS HTTP200 results verified. Originals saved. A restart and A/B recovery verification required next.
+Kartik generated a self-signed RSA 2048-bit certificate with SAN entries for both project domains.
 
-2026-10-03 20:56:57-58 IST: Six recovery responses B/B/A/B/A/B all HTTP200. Saved recovery screenshot. Single-backend failure and recovery complete. Both-backend-stop test next; DNS/nginx must remain running.
+nginx HTTPS was enabled on port `8443`.
 
-2026-10-03 20:59 IST: Both-down test shows DNS NOERROR, trusted TLS1.3 and HTTP502. Saved screenshot and evidence. Restart both backends and verify A/B HTTP200 before next fault.
+An initial test using `--cacert` passed certificate verification and returned HTTP 200.
 
-2026-10-03 21:02:35-36 IST: Both-backend recovery verified sixHTTP200 with B/B/A/B/A/B. Saved two originals. Only wrong-record failure demonstration remains; planned change app record to NitinIP with exact config backup/restoration.
+The public certificate was transferred to Nitin and Piyush. All three Macs reported identical SHA-256 fingerprints and installed explicit SSL trust.
 
-2026-10-03: Nitin terminated old DNS with SIGTERM, backed up and changed only app record to wrong10.63.169.3. Syntax passed. Supplied restart output ends at password prompt; startup and failure test pending. Correct final config remains preserved in bundle separately from fault variant.
+Subsequent HTTPS tests on all three Macs passed certificate verification without `--cacert` or `--insecure`. Nitin used `--resolve`; Kartik and Piyush used their configured private DNS.
 
-2026-10-03: New DNS process17542 active according to supplied query/reply logs. Piyush wrong-record lookup and HTTPS destination/error test next; restore still pending.
+## 7. Conditional Caching
 
-2026-10-03 21:16:30 IST: Wrong-record demo returned NOERROR A10.63.169.3 and curl tried that wrong IP with connection refused. Saved text evidence; restore correct DNS backup and verify HTTPS before marking last test complete.
+Piyush tested `/api/cache` through HTTPS.
 
-2026-10-03: Correct DNS backup restored and syntax verified. PID21865 startup confirmed. Client cache flush, correct A answer and HTTPS200 verification pending to close final failure demonstration.
+| Time on 3 October 2026 | Result |
+|---|---|
+| 20:17:14 IST | HTTP 200 from Backend B with Cache-Control and ETag |
+| 20:17:52 IST | HTTP 304 from Backend A after a matching If-None-Match request |
+
+The matching ETag and bodyless 304 response verified conditional validation across both backends.
+
+## 8. Wireshark Packet Capture
+
+Piyush captured traffic on Wi-Fi interface `en0`.
+
+The original `Phase1_DNS_TCP_TLS.pcapng` contains 41 packets. Wireshark reported zero dropped packets.
+
+Analysis verified:
+
+- DNS query and response in frames 15 and 16
+- TCP SYN, SYN-ACK and ACK in frames 21–23
+- TLS 1.2 handshake beginning in frame 24
+- Server certificate in frame 27
+- Encrypted Application Data in frames 33 and 35
+
+Focused DNS, TCP and TLS screenshots were saved alongside the original capture.
+
+## 9. Failure Demonstrations
+
+### Wrong Client DNS
+
+At 20:47:10 IST, Piyush's query through DNS server `8.8.8.8` returned NXDOMAIN. Ping to the edge IP still succeeded.
+
+Private DNS was restored, and correct resolution was verified at 20:48:14 IST.
+
+### Wrong Destination Port
+
+At approximately 20:51 IST, a request to port `8444` was refused while DNS resolved correctly.
+
+A request to the correct port `8443` returned HTTP 200.
+
+### Backend A Stopped
+
+With Backend A stopped, six HTTPS requests returned HTTP 200 from Backend B.
+
+After recovery, the six-request sequence was:
+
+```text
+B, B, A, B, A, B
+```
+
+All responses returned HTTP 200.
+
+### Both Backends Stopped
+
+At 20:59:31 IST, DNS resolution and TLS verification succeeded, but nginx returned HTTP 502.
+
+After backend recovery, six requests returned HTTP 200 with responses from both backends.
+
+### Wrong DNS Record
+
+Nitin temporarily changed the app record to `10.63.169.3`.
+
+At 21:16:30 IST, Piyush received NOERROR with that incorrect IP. The HTTPS connection to the wrong machine was refused.
+
+Nitin restored the working configuration and restarted dnsmasq.
+
+At 21:21:22 IST, DNS returned the correct edge IP. At 21:21:29 IST, the HTTPS request returned HTTP 200 from Backend A.
+
+## 10. Documentation Preparation
+
+On 4 October 2026, the team prepared form answers and revised the setup and evidence documents around the completed tests.
+
+Nitin also ran a fresh explicit public DNS query:
+
+```bash
+dig @8.8.8.8 app.teamcn.test A +time=3 +tries=1
+```
+
+At 10:57:41 IST, the query returned NXDOMAIN from `8.8.8.8`, providing the form's requested public DNS comparison.
+
+## 11. Related Documents
+
+- [Current Progress](Progress.md)
+- [Architecture](Architecture.md)
+- [Demo Guide](Demo_Guide.md)
+- [Packet Capture](06_Packet_Capture.md)
+- [Failure Demonstrations](07_Failure_Demonstrations.md)
+- [Evidence Index](../evidence/INDEX.md)
