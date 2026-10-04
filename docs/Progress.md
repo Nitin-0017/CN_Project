@@ -1,28 +1,105 @@
-# Phase 1 Final Status
+# Phase 1 Project Status
 
-Team: Nitin Kumar, Kartik Yadav, Piyush Yadav. Updated 2026-10-03 21:21 IST. Phase 1 only.
+**Team:** Nitin Kumar, Kartik Yadav and Piyush Yadav  
+**Documentation updated:** 4 October 2026  
+**Scope:** Phase 1
 
-| Requirement | Status | Evidence |
+The Phase 1 implementation and recorded functional tests are complete. Form submission, demonstration video and faculty evaluation are not marked complete without confirmation.
+
+## 1. Requirement Status
+
+| Requirement | Status | Supporting Documentation |
 |---|---|---|
-| A private LAN, inventory and topology | Verified on Kartik hotspot | Architecture.md, evidence/05 and06 |
-| B private DNS, two configured clients | Verified Kartik/Piyush normal lookup | evidence/13 and DNS screenshots |
-| C both backend endpoints and identifiers | Verified from Kartik | evidence/07 and08, backend/server.py |
-| D reverse proxy and round-robin | Verified HTTP/HTTPS A/B responses | evidence/17,30,31 |
-| E TLS and client trust | Verified on all three, no bypass | evidence/19-23 and27 |
-| F conditional HTTP caching | Verified200 B then304 A | evidence/24 and caching screenshot |
-| G DNS/TCP/TLS packet evidence | Original capture analysed | Phase1_DNS_TCP_TLS.pcapng, evidence/27 and focused screenshots |
-| Five controlled failures and recovery | All verified | evidence/28-33 |
-| Architecture, configs, source, evidence bundle | Prepared | README.md and included folders |
-| Faculty checkpoint and individual viva | To be presented by group | Demo_Guide.md and Viva_Notes.md |
+| A — LAN inventory and topology | Verified on the hotspot LAN | [Architecture](Architecture.md), [Ping Checks](03_Ping_Checks.md) |
+| B — Private DNS and two configured clients | Verified on Kartik and Piyush | [DNS Setup](../configs/DNS_Setup.md) |
+| C — Backend endpoints and identifiers | Both backends verified | [Backend Setup](../backend/README.md) |
+| D — Reverse proxy and load balancing | HTTP and HTTPS responses from A and B verified | [nginx Setup](../configs/NGINX_Setup.md) |
+| E — HTTPS and certificate trust | Certificate verification passed on all three Macs | [Client Trust](../configs/TLS_Client_Trust.md) |
+| F — Conditional HTTP caching | HTTP 200 followed by matching HTTP 304 verified | [Caching Test](05_Caching_Test.md) |
+| G — DNS, TCP and TLS packet evidence | Original capture analysed; screenshots retained | [Packet Capture](06_Packet_Capture.md) |
+| Five failure scenarios and recovery | All five verified | [Failure Demonstrations](07_Failure_Demonstrations.md) |
+| Source, configuration and evidence files | Prepared | [Evidence Index](../evidence/INDEX.md) |
+| Submission form | Answers being prepared | Submission confirmation pending |
+| Demonstration video | Required by the form | Completion not yet confirmed |
+| Faculty checkpoint and individual viva | To be presented by the group | [Demo Guide](Demo_Guide.md), [Viva Notes](Viva_Notes.md) |
 
-## Current working setup
+## 2. Recorded Working Configuration
 
-Nitin DNS10.63.169.3 and BackendA3001. Kartik nginx10.63.169.72 HTTPS8443, HTTP8080. Piyush BackendB10.63.169.63:3002. All on Kartik phone hotspot10.63.169.0/24, gateway10.63.169.210. Both app/api records restored to10.63.169.72.
+The final recovery test was completed on 3 October 2026.
 
-## Remaining presentation work
+| Machine | IP Address | Services |
+|---|---|---|
+| Nitin | 10.63.169.3 | DNS port 53 and Backend A port 3001 |
+| Kartik | 10.63.169.72 | nginx HTTP port 8080 and HTTPS port 8443 |
+| Piyush | 10.63.169.63 | Backend B port 3002 and client tests |
 
-Rehearse the live Phase1 checkpoint together and review viva notes. The submitted evidence has no browser screenshot; trusted curl meets the browser-or-curl route. Initial network inventory and ping evidence are text transcriptions; optional original screenshots can improve presentation. Wrong-record failure/recovery is supported by terminal text; screenshots can be added if available. No faculty evaluation result is claimed.
+Network details:
 
-## Known observation
+- Kartik's phone hotspot
+- Subnet: 10.63.169.0/24
+- Gateway: 10.63.169.210
+- Active interface: en0 on all three Macs
 
-Initial HTTP test had four timeouts then recovered. Logs showed client-closed499 requests; cause not proven. Later repeated tests and failures/recoveries passed. This history is retained rather than claimed fixed by an unperformed change.
+Both DNS records point to the edge:
+
+```text
+app.teamcn.test → 10.63.169.72
+api.teamcn.test → 10.63.169.72
+```
+
+These values describe the recorded setup. They do not imply that services remain running after terminals are closed.
+
+## 3. Verified Results
+
+- All six directional ping tests received four replies with zero loss.
+- Both backends returned HTTP 200 with correct identifiers.
+- Kartik and Piyush resolved both domains through the private DNS server.
+- External DNS forwarding succeeded.
+- nginx served requests from both backends.
+- HTTPS certificate verification passed on all three Macs.
+- The cache endpoint returned matching ETags across backends and a bodyless 304 response.
+- The saved capture verified DNS resolution, TCP connection establishment and TLS negotiation.
+- All five failure scenarios were followed by successful recovery.
+
+The initial HTTP tests included timeouts. A later repeat succeeded, but the original delay's cause was not conclusively established.
+
+## 4. Public DNS Comparison
+
+On 4 October 2026, Nitin ran:
+
+```bash
+dig @8.8.8.8 app.teamcn.test A +time=3 +tries=1
+```
+
+The query returned NXDOMAIN from Google's public DNS server. This output was used for the form's public DNS comparison.
+
+## 5. Evidence Coverage
+
+The evidence folder contains terminal records, screenshots and the original packet capture.
+
+- LAN inventory and initial ping proof are recorded as terminal text.
+- DNS client verification includes screenshots.
+- HTTPS verification is recorded through curl.
+- Caching includes the HTTP 200 and conditional 304 evidence.
+- DNS, TCP and TLS have focused Wireshark screenshots.
+- Wrong-record failure and recovery are supported by terminal text.
+
+Browser verification is not claimed. The HTTPS tests used curl with certificate validation enabled.
+
+## 6. Remaining Submission and Presentation Work
+
+1. Finish and review the submission form.
+2. Include the requested failure demonstration in the video.
+3. Check that repository image and document links open correctly.
+4. Rehearse the live demonstration and individual viva.
+5. Recheck IP addresses and restart services before any new live demonstration.
+
+Screenshots added to a video should be identified as recorded evidence rather than a live terminal demonstration.
+
+## 7. Related Documents
+
+- [Architecture](Architecture.md)
+- [Demo Guide](Demo_Guide.md)
+- [Historical Timeline](History.md)
+- [Evidence Index](../evidence/INDEX.md)
+
