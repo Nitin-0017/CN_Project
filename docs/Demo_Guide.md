@@ -333,10 +333,5 @@ Kartik and Piyush restore their original settings using:
 
 [DNS Rollback](../configs/DNS_Rollback.md)
 
-## 15. Viva Preparation
-
-Each member should understand DNS resolution, TCP connection establishment, TLS verification, reverse proxying, load balancing, conditional caching and failure recovery.
-
-See [Viva Notes](Viva_Notes.md).
 
 This guide covers Phase 1.
