@@ -1,0 +1,14 @@
+[req]
+prompt = no
+distinguished_name = dn
+x509_extensions = server_cert
+
+[dn]
+CN = app.teamcn.test
+O = CN Project Team
+
+[server_cert]
+subjectAltName = DNS:app.teamcn.test,DNS:api.teamcn.test
+basicConstraints = critical,CA:FALSE
+keyUsage = critical,digitalSignature,keyEncipherment
+extendedKeyUsage = serverAuth

@@ -1,0 +1,59 @@
+kartikyadav@app ~ % tail -n 30 ~/Documents/CN_Phase1/edge/logs/access.log
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03\xC3\x15N\x99m=\xFB\xF62(d\xADpp\xC8\xB1}\x22#\xC7\x05\xD4\x9B\x15\xE7I\x91\xAC)6\x9C\x03 gX\x956>\x0C\x9DCe\x05\xA6" 400 upstream=-
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03" 400 upstream=-
+10.63.169.63 "GET /api/status HTTP/1.1" 499 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 499 upstream=10.63.169.63:3002
+10.63.169.63 "GET /api/status HTTP/1.1" 499 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 499 upstream=10.63.169.63:3002
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.63:3002
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03A\xCC\xD1\xBD1\xBD\xBE\xF2\xE9'>\x07\xA4\x8C\x8B" 400 upstream=-
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03dH\x8A#Q\xD7\x18\x15\xE1Cbw\xC9f\x17" 400 upstream=-
+10.63.169.63 "\x16\x03\x01\x00\x95\x01\x00\x00\x91\x03\x01<\x0B\x9F\x9E\xCF\xC4\x1E\x1D\xBD\xD2" 400 upstream=-
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.63:3002
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.63:3002
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.3:3001
+10.63.169.63 "GET /api/status HTTP/1.1" 200 upstream=10.63.169.63:3002
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03\xC1\x98\xA5\xC9\xCD\xC9G\x94\xF1G\x82\xF7J6\xD6\x96\xCC\xD3\x98\xFD\x9D\xD6^\x0E\x09\x01?\xEB[B\xD0\x0E \x8C\xA3\xE1\xCB\xF58\x0E\x03Gp\x88)`J\xFB\xA3\x1E(\x8B\xF5Y;4/\xCC\x81AF\xFA\xD8\xB99\x00*\xDA\xDA\x13\x01\x13\x02\x13\x03\xC0,\xC0+\xCC\xA9\xC00\xC0/\xCC\xA8\xC0" 400 upstream=-
+10.63.169.63 "\x16\x03\x01\x02\x00\x01\x00\x01\xFC\x03\x03\xC1^\x8E,\xF7\x10\x92\xAA\x16?\xE6\x09\x9A!\xFB&\xC0=im\x9DMa\x90\xF9D\xFE1\xC7y\xB7\xAD \xB9\xB6\xEA\xDAMV\xC3n')\xD8\xB1\xC9g\xFFa\x88\x16\xDE\xF93\xFD+9\x17lOCe\xD9\x1Cy\x00," 400 upstream=-
+10.63.169.63 "\x16\x03\x01\x00\x95\x01\x00\x00\x91\x03\x01\xB2\x8C\x833_\x8C\x1F\xEE\xB4#I\xAD\xDA8\x88\x1F\x1C!\x9Bp\xAD\xEA\xB6\x90#%\x0E\xE8er\xD7\xE6\x00\x00\x14\xC0" 400 upstream=-
+kartikyadav@app ~ % tail -n 30 ~/Documents/CN_Phase1/edge/logs/error.log
+2026/10/03 19:50:26 [notice] 49065#0: hw.ncpu: 8
+2026/10/03 19:50:26 [notice] 49065#0: net.inet.tcp.sendspace: 131072
+2026/10/03 19:50:26 [notice] 49065#0: kern.ipc.somaxconn: 128
+2026/10/03 19:50:26 [notice] 49065#0: hw.cachelinesize: 128
+2026/10/03 19:50:26 [notice] 49065#0: getrlimit(RLIMIT_NOFILE): 256:9223372036854775807
+2026/10/03 19:50:26 [notice] 49065#0: start worker processes
+2026/10/03 19:50:26 [notice] 49065#0: start worker process 49066
+2026/10/03 19:53:28 [info] 49066#0: *2 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "??N?m=??2(d?ppȱ}"#?ԛ?I??)6? gX?6>
+                                                                                                                                                                                               ?Ce?"
+2026/10/03 19:53:28 [info] 49066#0: *6 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "?"
+2026/10/03 19:53:28 [info] 49066#0: *1 kevent() reported that client prematurely closed connection, so upstream connection is closed too while connecting to upstream, client: 10.63.169.63, server: app.teamcn.test, request: "GET /api/status HTTP/1.1", upstream: "http://10.63.169.3:3001/api/status", host: "app.teamcn.test:8080"
+2026/10/03 19:53:28 [info] 49066#0: *3 kevent() reported that client prematurely closed connection, so upstream connection is closed too while connecting to upstream, client: 10.63.169.63, server: app.teamcn.test, request: "GET /api/status HTTP/1.1", upstream: "http://10.63.169.63:3002/api/status", host: "app.teamcn.test:8080"
+2026/10/03 19:53:28 [info] 49066#0: *4 kevent() reported that client prematurely closed connection, so upstream connection is closed too while connecting to upstream, client: 10.63.169.63, server: app.teamcn.test, request: "GET /api/status HTTP/1.1", upstream: "http://10.63.169.3:3001/api/status", host: "app.teamcn.test:8080"
+2026/10/03 19:53:28 [info] 49066#0: *5 kevent() reported that client prematurely closed connection, so upstream connection is closed too while connecting to upstream, client: 10.63.169.63, server: app.teamcn.test, request: "GET /api/status HTTP/1.1", upstream: "http://10.63.169.63:3002/api/status", host: "app.teamcn.test:8080"
+2026/10/03 19:53:28 [info] 49066#0: *7 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:53:28 [info] 49066#0: *13 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:53:42 [info] 49066#0: *15 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "?A?ѽ1????'>???"
+2026/10/03 19:53:42 [info] 49066#0: *16 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "?dH?#Q??Cbw?f"
+2026/10/03 19:53:42 [info] 49066#0: *17 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "??<
+                                                                                                                                                                  ??????"
+2026/10/03 19:56:17 [info] 49066#0: *18 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:17 [info] 49066#0: *20 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:17 [info] 49066#0: *22 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:17 [info] 49066#0: *23 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:17 [info] 49066#0: *24 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:17 [info] 49066#0: *25 kevent() reported that client 10.63.169.63 closed keepalive connection
+2026/10/03 19:56:36 [info] 49066#0: *26 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "???????G??G??J6֖?Ә???^	??[B? ?????8Gp?)`J??(??Y;4/́AF?ع9*???,?+̩?0?/̨?"
+2026/10/03 19:56:36 [info] 49066#0: *27 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "??^?,?????	?!?&?=im?Ma??D?1?y?? ????MV?n')ر?g?a???3?+9lOCe?y,"
+2026/10/03 19:56:36 [info] 49066#0: *28 client sent invalid method while reading client request line, client: 10.63.169.63, server: app.teamcn.test, request: "?????3_??#I??8?!?p?궐#%?er???"
+2026/10/03 19:58:21 [notice] 49066#0: signal 28 (SIGWINCH) received from 72945
+2026/10/03 19:58:21 [notice] 49065#0: signal 28 (SIGWINCH) received from 72945
+2026/10/03 19:58:21 [info] 49066#0: kevent() failed (4: Interrupted system call)
+kartikyadav@app ~ % command -v openssl
+/opt/homebrew/bin/openssl
+kartikyadav@app ~ % openssl version
+OpenSSL 4.0.3 29 Sep 2026 (Library: OpenSSL 4.0.3 29 Sep 2026)
+kartikyadav@app ~ %

@@ -1,0 +1,193 @@
+kartikyadav@Kartiks-MacBook-Pro-6 ~ % brew install nginx
+==> Auto-updating Homebrew...
+Adjust how often this is run with `$HOMEBREW_AUTO_UPDATE_SECS` or disable with
+`$HOMEBREW_NO_AUTO_UPDATE=1`. Hide these hints with `$HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+==> Downloading https://ghcr.io/v2/homebrew/core/portable-ruby/blobs/sha256:e0088dff5614b39387300136ec7a5f95bf1e07589547245c919524fc9e8b4197
+############################################################################################################################################################################################################## 100.0%
+==> Pouring portable-ruby-4.0.7.arm64_big_sur.bottle.tar.gz
+==> Auto-updated Homebrew!
+Updated 3 taps (mongodb/brew, homebrew/core and homebrew/cask).
+==> New Formulae
+agent-manager: Run Claude Code, Codex, OpenCode and other AI coding agents in tmux
+all-smi: GPU monitoring tool for NVIDIA/Jetson/Apple Silicon/Tenstorrent
+amy: Nostr client from the Amethyst project
+apkid: Android application identifier for compilers, packers, and obfuscators
+arcane-cli: Command-line client for the Arcane Docker management platform
+atomgit-cli: Command-line interface for AtomGit
+awww: Answer to your Wayland Wallpaper Woes
+b4n: Terminal user interface (TUI) for Kubernetes API written in Rust
+bashka: Static verification of installation bash scripts
+bashly: Bash command-line framework and CLI generator
+bend: Language that blocks AI mistakes via proof
+betterglobekey: Reworked Globe key for faster input source switching
+budget-tracker: Feature rich TUI budget tracker app
+cargo-mutants: Inject bugs and see if your tests catch them
+ccmux: Run all your AI coding agents in tmux
+confluence-markdown-exporter: Export Atlassian Confluence pages as Markdown files
+cuttlefish: Build compacted de Bruijn graphs from references or reads
+deja: Predictive ghost-text autosuggestions for zsh
+deja-vu: Local searchable memory over the session histories of coding agents
+elasticmq: In-memory message queue with an Amazon SQS-compatible interface
+fastplong: Ultra-fast preprocessing and quality control for long-read sequencing data
+ffmpeg@8: Play, record, convert, and stream select audio and video codecs
+forgejo-runner: Official Actions runner for Forgejo instances
+fx-agent: Tiny, open, embeddable, native coding agent
+gffcompare: Compare, merge and annotate GFF/GTF transcript files
+glci: Run GitLab CI/CD pipelines locally
+go-arch-lint: Architecture linter for Go projects
+go@1.26: Open source programming language to build simple/reliable/efficient software
+gpk: TUI and CLI that unifies every package manager on the system
+hidapitester: Command-line tool to exercise USB HID devices via HIDAPI
+hister: Self-hosted search engine for your browsing history
+inshellisense: IDE style command-line auto complete
+jarl: Just another R linter
+jcode: AI coding agent harness for the terminal
+ketch: Web search and scraping for agents
+kpt: Toolchain for composing, customizing, and deploying Kubernetes packages
+kubectl-radar: Missing open-source Kubernetes UI with a built-in MCP server for AI agents
+leaves: Text-mode disk usage visualization utility
+libklvanc: VANC Processing Framework
+libmysofa: Reader for AES SOFA files to get better HRTFs
+linecast: Weather, tides, the sun, the moon, and maps, drawn for the terminal
+lld@22: LLVM Project Linker
+lldb: Next generation, high-performance debugger
+llvm@22: Next-gen compiler infrastructure
+mariadb@12.3: Drop-in replacement for MySQL
+modflow6: USGS modular hydrologic model
+mongodb/brew/mongodb-community@8.3
+mongodb/brew/mongodb-enterprise@8.3
+mongodb/brew/mongodb-mongocryptd@8.3
+mysql-client@9.7: Open source relational database management system
+mysql@9.7: Open source relational database management system
+ntfs2btrfs: In-place conversion of NTFS filesystem to Btrfs
+nub: Fast TypeScript runtime and package manager that augments Node
+obscura: Headless browser for AI agents and web scraping
+openfasttrace: Requirement tracing suite
+openshell: Safe, private runtime for autonomous AI agents
+osctrl-mcp: Fast and efficient osquery management
+percona-server@8.4: Drop-in MySQL replacement
+pg_activity: Top-like interactive monitoring tool for PostgreSQL server activity
+pixivbiu: Pixiv client. Easy to search, browse, and download artworks
+plink-ng: Whole-genome association analysis toolset (PLINK 2.0)
+plink1: Whole-genome association analysis toolset
+pnpm@11: Fast, disk space efficient package manager
+pypy3.12: Implementation of Python 3 in Python
+pythia: Monte Carlo event generator
+rammap: Extensible and performant aligner and read mapper
+ratex: Fast TeX engine written in Rust
+readwise-cli: Command-line interface for Readwise and Reader
+robot-framework-robocop: Static code analysis tool (linter) and code formatter for Robot Framework
+robotcode: Ultimate Robot Framework Toolset
+rtp2httpd: Multicast RTP/RTSP-to-HTTP converter with web player and status dashboard
+rubocop: Ruby static code analyzer and formatter, based on the community Ruby style guide
+sabiql: Fast, safe-by-design, driverless, Vim-first DB TUI with ER diagrams
+sdrmm: Modular, client-server software-defined radio
+shpool: Persistent shell session manager
+skillspector: Security scanner for AI agent skills
+smbclient-ng: Fast and user friendly way to interact with SMB shares
+snx-rs: Open-source client for Check Point VPN tunnels
+sofka: Kubernetes TUI, reimagined in Rust
+somalier: Relatedness, QC and ancestry checks from BAM/CRAM/VCF
+speedtest-go: CLI and Go API to Test Internet Speed using speedtest.net
+svlang: SystemVerilog compiler and language services
+tailcat: Netcat-like tool over Tailscale's data plane, without its control plane
+taoup: Tao of Unix Programming with Ruby-powered ANSI-colored fortunes
+tcltls: OpenSSL extension to Tcl
+tele: Keyboard-first Telegram client for the terminal, written in Go
+termaid: Render Mermaid diagrams in the terminal
+tfswitch: Command-line tool to switch between Terraform versions
+tgrep: Trigram-indexed grep for fast regex search in large codebases
+tracy-genomics: Basecalling, alignment, assembly and deconvolution of Sanger chromatograms
+trealla-prolog: Compact and efficient ISO Prolog interpreter written in plain old C
+tunnelite: Secure tunneling to local applications
+uavs3d: AVS3 decoder which supports AVS3-P2 baseline profile
+vapoursynth-vszip: VapourSynth Zig Image Process
+vcfexpress: Filter and format VCF/BCF files with Lua expressions
+virglrenderer: VirGL virtual OpenGL renderer
+vortix: Terminal UI for WireGuard and OpenVPN with live telemetry and leak guarding
+wavemon: Ncurses-based monitoring application for wireless network devices on Linux
+workmux: Git worktrees + tmux windows for zero-friction parallel dev
+xevd: Very fast Essential Video Decoder, MPEG-5 EVC (Essential Video Coding)
+xeve: Very fast Essential Video Encoder, MPEG-5 EVC (Essential Video Coding)
+xgrammar: Structured generation and reasoning engine for LLMs
+xmedcon: Medical image conversion toolkit
+xwpe: Borland-style IDE clone with LSP/DAP support (terminal UI)
+zig@0.16: Programming language designed for robustness, optimality, and clarity
+
+You have 10 outdated formulae installed.
+
+Warning: The following taps are not trusted:
+  mongodb/brew
+
+Homebrew is currently ignoring formulae, casks and commands
+from these taps because tap trust is required.
+Prefer trusting only the specific formulae, casks or commands you need.
+Trust installed formulae from these taps with:
+  brew trust --formula mongodb/brew/mongodb-community mongodb/brew/mongodb-database-tools
+Trust other specific casks and commands with:
+  brew trust --cask <user>/<tap>/<cask>
+  brew trust --command <user>/<tap>/<command>
+Whole-tap trust is broader and includes all current and future formulae,
+casks and commands from the listed taps. Trust whole taps with:
+  brew trust mongodb/brew
+Untap them with:
+  brew untap mongodb/brew
+For more information, see:
+  https://docs.brew.sh/Tap-Trust
+==> Downloading bottle manifests
+✔︎ Bottle Manifest nginx (1.31.6)                                                                                                                                                         Downloaded   34.8KB/ 34.8KB
+==> Would install 1 formula:
+nginx 1.31.6
+==> Would install 2 dependencies for nginx:
+openssl@4
+pcre2
+==> Would upgrade 1 dependency for nginx:
+ca-certificates
+==> Do you want to proceed with the installation? [y/n]
+==> Fetching downloads for: nginx
+✔︎ Bottle Manifest ca-certificates (2026-09-25)                                                                                                                                           Downloaded    8.1KB/  8.1KB
+✔︎ Bottle Manifest openssl@4 (4.0.3)                                                                                                                                                      Downloaded   19.5KB/ 19.5KB
+✔︎ Bottle Manifest pcre2 (10.49)                                                                                                                                                          Downloaded   18.5KB/ 18.5KB
+✔︎ Bottle ca-certificates (2026-09-25)                                                                                                                                                    Downloaded  112.2KB/112.2KB
+✔︎ Bottle nginx (1.31.6)                                                                                                                                                                  Downloaded    1.6MB/  1.6MB
+✔︎ Bottle pcre2 (10.49)                                                                                                                                                                   Downloaded    2.5MB/  2.5MB
+✔︎ Bottle openssl@4 (4.0.3)                                                                                                                                                               Downloaded   11.2MB/ 11.2MB
+==> Installing dependencies for nginx: ca-certificates ↑, openssl@4 and pcre2
+==> Upgrading nginx dependency: ca-certificates
+==> Pouring ca-certificates--2026-09-25.all.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/ca-certificates/2026-09-25: 5 files, 204.4KB
+==> Installing nginx dependency: openssl@4
+==> Pouring openssl@4--4.0.3.arm64_tahoe.bottle.tar.gz
+Unlinking /opt/homebrew/Cellar/openssl@3/3.6.0... 6547 symlinks removed.
+🍺  /opt/homebrew/Cellar/openssl@4/4.0.3: 6,820 files, 23.8MB
+==> Installing nginx dependency: pcre2
+==> Pouring pcre2--10.49.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/pcre2/10.49: 245 files, 7.3MB
+==> Installing nginx
+==> Pouring nginx--1.31.6.arm64_tahoe.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/nginx/1.31.6: 28 files, 2.8MB
+==> `brew cleanup` has not been run in the last 30 days, running now...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+Removing: /opt/homebrew/Cellar/ca-certificates/2025-11-04... (4 files, 241.5KB)
+Removing: /Users/kartikyadav/Library/Caches/Homebrew/portable-ruby-4.0.6.arm64_big_sur.bottle.tar.gz... (12.7MB)
+Removing: /Users/kartikyadav/Library/Caches/Homebrew/bootsnap/8d78006a3755c8c555a1ff4b19491c91150f5638350af98f9a4241465a07c266... (1,062 files, 9.7MB)
+==> Caveats
+==> nginx
+Docroot is: /opt/homebrew/var/www
+
+The default port has been set in /opt/homebrew/etc/nginx/nginx.conf to 8080 so that
+nginx can run without sudo.
+
+nginx will load all files in /opt/homebrew/etc/nginx/servers/.
+
+To start nginx now and restart at login:
+  brew services start nginx
+Or, if you don't want/need a background service you can just run:
+  /opt/homebrew/opt/nginx/bin/nginx -g daemon\ off\;
+kartikyadav@Kartiks-MacBook-Pro-6 ~ % brew --prefix
+/opt/homebrew
+kartikyadav@Kartiks-MacBook-Pro-6 ~ % nginx -v
+nginx version: nginx/1.31.6
+kartikyadav@Kartiks-MacBook-Pro-6 ~ % lsof -nP -iTCP:8080 -iTCP:8443 -sTCP:LISTEN
+kartikyadav@Kartiks-MacBook-Pro-6 ~ %
