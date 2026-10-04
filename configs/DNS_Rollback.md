@@ -1,29 +1,96 @@
-# Restore Original Wi Fi DNS
+# Restore Original Wi-Fi DNS Settings
 
-Original settings were captured before project DNS modification on 2026-10-03. Run these only when restoring settings after the demo or leaving the project network, not during the running project.
+The original DNS settings were recorded on 3 October 2026 before configuring the project DNS.
 
-## Kartik Yadav
+Use these rollback commands after the demonstration or when leaving the project network.
 
-Restore automatic DNS:
+## 1. Kartik — Restore Automatic DNS
 
-```sh
+Kartik originally had no manually configured Wi-Fi DNS servers.
+
+Run on Kartik's Mac:
+
+```bash
 sudo networksetup -setdnsservers "Wi-Fi" Empty
 ```
 
-## Piyush Yadav
+## 2. Piyush — Restore Original DNS Servers
 
-Restore original manual entries in their recorded order:
+Piyush's original Wi-Fi DNS servers were:
 
-```sh
+```text
+8.8.8.8
+4.2.2.2
+```
+
+Run on Piyush's Mac:
+
+```bash
 sudo networksetup -setdnsservers "Wi-Fi" 8.8.8.8 4.2.2.2
 ```
 
-## Both clients
+## 3. Verify Restored Settings
 
-Verify restored settings:
+Run on each client:
 
-```sh
+```bash
 networksetup -getdnsservers "Wi-Fi"
 ```
 
-Project setting during demo is 10.63.169.3 only. Nitin's DNS must stay running on the same hotspot. If Nitin's IP changes, update configurations and clients. Switching networks with this project resolver still configured may break DNS; restore original settings when done.
+Expected results:
+
+- **Kartik:** No manually configured DNS servers.
+- **Piyush:** `8.8.8.8` followed by `4.2.2.2`.
+
+## 4. Original Settings Evidence
+
+The recorded terminal output is available in:
+
+[Original DNS Settings and Forwarding Evidence](../evidence/12_original_dns_and_forwarding.md)
+
+This evidence records the original settings before the project DNS changes. The screenshots below show the later project configuration.
+
+## 5. Project DNS Configuration
+
+During the demonstration, Kartik and Piyush used Nitin's private DNS server:
+
+```text
+10.63.169.3
+```
+
+To configure the project DNS on either client:
+
+```bash
+sudo networksetup -setdnsservers "Wi-Fi" 10.63.169.3
+networksetup -getdnsservers "Wi-Fi"
+```
+
+Nitin's dnsmasq must be running and reachable on the project network.
+
+### Kartik — Project DNS Screenshot
+
+The screenshot shows DNS server `10.63.169.3` and successful resolution of the project domains to nginx edge IP `10.63.169.72`.
+
+![Kartik project DNS configuration and resolution](../evidence/Kartik_default_DNS.png)
+
+### Piyush — Project DNS Screenshot
+
+The screenshot shows DNS server `10.63.169.3` and successful resolution of the project domains to nginx edge IP `10.63.169.72`.
+
+![Piyush project DNS configuration and resolution](../evidence/Piyush_default_DNS.jpg)
+
+## 6. DNS Failure Test Recovery
+
+After the wrong-DNS failure demonstration, Piyush restored the project DNS server to `10.63.169.3`.
+
+The subsequent query returned `NOERROR` and the correct edge IP `10.63.169.72`.
+
+![Piyush restores project DNS after the failure test](../evidence/Piyush_restore_DNS.jpg)
+
+Restoring the project DNS after a failure test is different from restoring the original settings after completing the demonstration.
+
+## 7. Network Changes
+
+The recorded project DNS IP was `10.63.169.3`. If Nitin's IP changes after reconnecting, update the DNS configuration and client settings.
+
+After finishing the demonstration, restore each client's original DNS settings before leaving the project network.
