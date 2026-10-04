@@ -10,7 +10,7 @@ The implementation and functional tests were completed on 3 October 2026. The re
 |---|---|---|
 | Nitin Kumar | 10.63.169.3 | Private DNS server and Backend A |
 | Kartik Yadav | 10.63.169.72 | nginx edge, TLS termination and load balancing |
-| Piyush Yadav | 10.63.169.63 | Backend B, client testing and Wireshark capture |
+| Piyush Raj | 10.63.169.63 | Backend B, client testing and Wireshark capture |
 
 **Infrastructure:** Type 2 — Three Macs with combined roles  
 **Network:** Kartik's phone hotspot  
